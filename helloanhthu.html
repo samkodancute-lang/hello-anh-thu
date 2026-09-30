@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hello Anh Thư 🌸</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+        color: #7a4058;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.75);
+        padding: 50px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(150,80,110,0.15);
+        backdrop-filter: blur(10px);
+    }
+
+    h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    #greeting {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    #clock {
+        font-size: 55px;
+        font-weight: bold;
+    }
+
+    #date {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Hello Anh Thư 🌸</h1>
+
+    <div id="greeting"></div>
+
+    <div id="clock"></div>
+
+    <div id="date"></div>
+</div>
+
+<script>
+function updateTime() {
+
+    const now = new Date();
+    const hour = now.getHours();
+
+    let greeting;
+
+    if (hour >= 5 && hour < 11) {
+        greeting = "☀️ Chào buổi sáng, Anh Thư!";
+    } 
+    else if (hour >= 11 && hour < 14) {
+        greeting = "🌷 Chào buổi trưa, Anh Thư!";
+    } 
+    else if (hour >= 14 && hour < 18) {
+        greeting = "🌤️ Chào buổi chiều, Anh Thư!";
+    } 
+    else {
+        greeting = "🌙 Chào buổi tối, Anh Thư!";
+    }
+
+    document.getElementById("greeting").textContent = greeting;
+
+    const time = now.toLocaleTimeString("vi-VN");
+
+    document.getElementById("clock").textContent = time;
+
+    const date = now.toLocaleDateString("vi-VN", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+
+    document.getElementById("date").textContent = date;
+}
+
+updateTime();
+
+setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
